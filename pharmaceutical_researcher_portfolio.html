@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md. Rabiul Hossain — Pharmacist &amp; Medicine Researcher Portfolio</title>
+
+  <!-- Google Fonts: Space Grotesk (Bold Geometric Headings) & Inter (Clean UI Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Custom Theme Matching Reference Figma Mockup -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              bg: '#071126',
+              card: '#0F2142',
+              elevated: '#0C1C3A',
+              border: '#1B335E',
+              input: '#0B1933',
+            },
+            mint: '#4EE2B8',
+            coral: '#FF6B5A',
+            violetAccent: '#8B5CF6',
+            blueAccent: '#3B82F6',
+            amberAccent: '#FBBF24',
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            glowMint: '0 0 18px rgba(78, 226, 184, 0.45)',
+            glowCoral: '0 0 18px rgba(255, 107, 90, 0.45)',
+            glowIndigo: '0 0 18px rgba(99, 102, 241, 0.45)',
+            glowAmber: '0 0 18px rgba(251, 191, 36, 0.45)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #071126;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1, h2, h3, .font-heading {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Subtle bar hover animation for Impact Analytics Chart */
+    .chart-bar {
+      transition: transform 0.25s ease, opacity 0.25s ease;
+      transform-origin: bottom;
+    }
+    .chart-bar:hover {
+      transform: scaleY(1.08);
+      opacity: 0.95;
+    }
+
+    /* Clean Print Layout for the CV Modal */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #0F172A !important;
+      }
+      body * {
+        visibility: hidden;
+      }
+      #cv-printable-area,
+      #cv-printable-area * {
+        visibility: visible;
+      }
+      #cv-printable-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        max-height: none !important;
+        overflow: visible !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: #FFFFFF !important;
+        color: #0F172A !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-navy-bg text-white antialiased selection:bg-mint/25 selection:text-mint overflow-x-hidden">
+
+  <!-- ==================== 1. STICKY DARK NAVY GLASS NAVBAR ==================== -->
+  <header class="sticky top-0 z-40 bg-navy-bg/90 backdrop-blur-md border-b border-navy-border/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-18">
+        <!-- Left Brand: Portfolio + Mint Dot -->
+        <a href="#home" class="flex items-center gap-2 group focus:outline-none">
+          <span class="font-display font-bold text-xl tracking-tight text-white">Portfolio</span>
+          <span class="w-2 h-2 rounded-full bg-mint shadow-glowMint group-hover:scale-125 transition-transform"></span>
+        </a>
+
+        <!-- Center / Right Nav Links -->
+        <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300" aria-label="Primary Navigation">
+          <a href="#home" class="hover:text-mint transition-colors">Home</a>
+          <a href="#about" class="hover:text-mint transition-colors">About</a>
+          <a href="#timeline" class="hover:text-mint transition-colors">Timeline</a>
+          <a href="#publications" class="hover:text-mint transition-colors">Publications</a>
+          <a href="#skills" class="hover:text-mint transition-colors">Skills</a>
+          <a href="#grants" class="hover:text-mint transition-colors">Grants</a>
+        </nav>
+
+        <!-- Far Right Coral CTA + Mobile Hamburger -->
+        <div class="flex items-center gap-3">
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center px-5 py-2 rounded-full bg-coral hover:bg-[#ff5642] text-white text-xs sm:text-sm font-semibold transition-all shadow-md hover:shadow-glowCoral"
+          >
+            Get in Touch
+          </a>
+
+          <button
+            id="mobile-menu-btn"
+            type="button"
+            class="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-navy-card border border-navy-border transition-colors"
+            aria-label="Toggle Menu"
+            aria-expanded="false"
+          >
+            <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-navy-elevated border-t border-navy-border">
+      <nav class="px-4 py-3 space-y-1 text-sm font-medium text-slate-300" aria-label="Mobile Navigation">
+        <a href="#home" class="mobile-nav-link block px-3 py-2.5 rounded-lg hover:bg-navy-card hover:text-mint">Home</a>
+        <a href="#about" class="mobile-nav-link block px-3 py-2.5 rounded-lg hover:bg-navy-card hover:text-mint">About &amp; Impact</a>
+        <a href="#timeline" class="mobile-nav-link block px-3 py-2.5 rounded-lg hover:bg-navy-card hover:text-mint">Academic Timeline</a>
+        <a href="#publications" class="mobile-nav-link block px-3 py-2.5 rounded-lg hover:bg-navy-card hover:text-mint">Featured Publications</a>
+        <a href="#skills" class="mobile-nav-link block px-3 py-2.5 rounded-lg hover:bg-navy-card hover:text-mint">Technical &amp; Lab Skills</a>
+        <a href="#grants" class="mobile-nav-link block px-3 py-2.5 rounded-lg hover:bg-navy-card hover:text-mint">Grants &amp; Conferences</a>
+        <a href="#contact" class="mobile-nav-link block px-3 py-2.5 rounded-lg hover:bg-navy-card hover:text-coral">Contact &amp; Profiles</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ==================== 2. HERO SECTION (SIGNATURE MINT ARCH LAYOUT) ==================== -->
+    <section id="home" class="relative overflow-hidden border-b border-navy-border/60">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
+
+          <!-- Left Column: Name in Mint, Bold White Title, Bio & Pill Buttons -->
+          <div class="lg:col-span-6 space-y-5 z-10">
+            <div class="space-y-2">
+              <p class="font-display text-2xl sm:text-3xl font-bold text-mint tracking-tight">
+                Md. Rabiul Hossain
+              </p>
+              <h1 class="font-display text-3xl sm:text-4xl lg:text-[46px] font-bold text-white leading-[1.12] tracking-tight">
+                Pharmacist &amp;<br />Medicine Researcher
+              </h1>
+            </div>
+
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-xl">
+              Assistant Professor, Department of Pharmacy, USTC &amp; Register "A" Pharmacist (Reg. No. 10450). Specializing in Natural Product Chemistry, Functional Foods, Metabolic Pharmacology, and Computer-Aided Drug Design (CADD).
+            </p>
+
+            <!-- Action Pill Buttons Side-by-Side -->
+            <div class="flex flex-wrap items-center gap-3.5 pt-2">
+
+
+              <a
+                href="#contact"
+                class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-coral/60 text-white hover:bg-white/5 hover:border-coral text-sm font-semibold transition-all"
+              >
+                Get in touch
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Signature Mint Green Rounded-L-Full Pill Backdrop Extending to Right Edge -->
+          <div class="lg:col-span-6 relative flex justify-center lg:justify-end">
+            <!-- Large Mint Arch Pill Backdrop -->
+            <div class="relative w-full max-w-md lg:max-w-none lg:w-[118%] lg:-mr-[18%] bg-mint rounded-full lg:rounded-r-none lg:rounded-l-full py-5 px-5 sm:py-6 sm:px-8 flex items-center justify-center lg:justify-start shadow-2xl">
+              <!-- Circular Portrait Frame -->
+              <div class="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full bg-[#E6F4F1] border-4 border-white/80 shadow-xl overflow-hidden shrink-0 relative flex items-center justify-center">
+                <!-- Crisp Custom SVG Pharmaceutical Researcher in Laboratory Illustration -->
+                <svg viewBox="0 0 320 320" class="w-full h-full" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pharmaceutical Researcher in Laboratory">
+                  <defs>
+                    <linearGradient id="labBg" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#DDF6F0" />
+                      <stop offset="100%" stop-color="#B9E6DF" />
+                    </linearGradient>
+                    <linearGradient id="coatGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#FFFFFF" />
+                      <stop offset="100%" stop-color="#E2E8F0" />
+                    </linearGradient>
+                    <linearGradient id="skinGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#E8B89A" />
+                      <stop offset="100%" stop-color="#D49B7A" />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Soft Clinical Lab Background -->
+                  <rect width="320" height="320" fill="url(#labBg)" />
+
+                  <!-- Background Lab Shelves & Glassware Silhouettes -->
+                  <rect x="20" y="55" width="90" height="6" rx="3" fill="#94D2C7" opacity="0.65" />
+                  <rect x="220" y="70" width="80" height="6" rx="3" fill="#94D2C7" opacity="0.65" />
+                  <path d="M40 55 L46 30 L54 30 L60 55 Z" fill="#4EE2B8" opacity="0.55" />
+                  <rect x="70" y="34" width="12" height="21" rx="3" fill="#3B82F6" opacity="0.4" />
+                  <!-- Molecular Hexagon Watermark -->
+                  <g stroke="#0F2142" stroke-opacity="0.1" stroke-width="2" fill="none">
+                    <polygon points="255,32 272,42 272,62 255,72 238,62 238,42" />
+                    <line x1="272" y1="42" x2="288" y2="33" />
+                    <circle cx="288" cy="33" r="3" fill="#0F2142" fill-opacity="0.15" />
+                  </g>
+
+                  <!-- Researcher Body (Lab Coat + Navy Shirt & Tie) -->
+                  <path d="M98 320 C102 248, 128 214, 174 214 C220 214, 248 246, 256 320 Z" fill="url(#coatGrad)" stroke="#CBD5E1" stroke-width="2" />
+                  <!-- Inner Navy Shirt & Tie -->
+                  <path d="M154 214 L174 268 L194 214 Z" fill="#0F2142" />
+                  <path d="M170 222 L178 222 L180 258 L174 268 L168 258 Z" fill="#4EE2B8" />
+                  <!-- Lab Coat Lapels -->
+                  <path d="M154 214 L138 242 L160 278 L174 268 Z" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+                  <path d="M194 214 L210 242 L188 278 L174 268 Z" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+                  <!-- ID Badge on Pocket -->
+                  <rect x="200" y="254" width="26" height="18" rx="3" fill="#0F2142" />
+                  <rect x="204" y="258" width="18" height="4" rx="1.5" fill="#4EE2B8" />
+                  <rect x="204" y="265" width="12" height="3" rx="1.5" fill="#94A3B8" />
+
+                  <!-- Neck & Head -->
+                  <rect x="160" y="188" width="28" height="32" rx="12" fill="#D49B7A" />
+                  <ellipse cx="174" cy="148" rx="39" ry="46" fill="url(#skinGrad)" />
+                  <!-- Hair -->
+                  <path d="M135 142 C133 106, 154 90, 178 92 C204 94, 217 112, 213 144 C208 124, 194 114, 174 114 C153 114, 141 124, 135 142 Z" fill="#1E293B" />
+                  <!-- Subtle Beard / Academic Look -->
+                  <path d="M140 162 C143 184, 158 196, 174 196 C190 196, 205 184, 208 162 C201 174, 189 182, 174 182 C159 182, 147 174, 140 162 Z" fill="#1E293B" opacity="0.72" />
+                  <!-- Modern Academic Glasses -->
+                  <g stroke="#0F2142" stroke-width="2.6" fill="#FFFFFF" fill-opacity="0.22">
+                    <rect x="145" y="138" width="24" height="16" rx="5" />
+                    <rect x="179" y="138" width="24" height="16" rx="5" />
+                    <line x1="169" y1="145" x2="179" y2="145" />
+                  </g>
+                  <!-- Eyes & Smile -->
+                  <circle cx="157" cy="146" r="2.6" fill="#0F172A" />
+                  <circle cx="191" cy="146" r="2.6" fill="#0F172A" />
+                  <path d="M165 170 Q174 176 183 170" stroke="#7C2D12" stroke-width="2.2" stroke-linecap="round" fill="none" />
+
+                  <!-- Foreground Laboratory Microscope (Left Side, matching mockup composition) -->
+                  <g transform="translate(24, 148)">
+                    <!-- Microscope Base -->
+                    <rect x="16" y="124" width="76" height="14" rx="5" fill="#0F2142" />
+                    <!-- Arm -->
+                    <path d="M34 124 C22 96, 24 62, 46 44 L56 54 C40 68, 40 94, 48 124 Z" fill="#1E3A5F" />
+                    <!-- Eyepiece Tube -->
+                    <rect x="52" y="20" width="16" height="54" rx="4" transform="rotate(24 52 20)" fill="#334155" />
+                    <rect x="58" y="10" width="12" height="14" rx="2" transform="rotate(24 58 10)" fill="#0F2142" />
+                    <!-- Stage & Slide -->
+                    <rect x="46" y="92" width="44" height="7" rx="2.5" fill="#0F2142" />
+                    <rect x="56" y="88" width="24" height="4" rx="1" fill="#4EE2B8" />
+                    <!-- Focus Knob -->
+                    <circle cx="38" cy="96" r="8" fill="#4EE2B8" stroke="#0F2142" stroke-width="2.5" />
+                  </g>
+
+                  <!-- Foreground Blue Nitrile Gloved Hand + Conical Flask -->
+                  <path d="M238 258 L252 228 L266 228 L280 258 C282 263, 279 268, 273 268 L245 268 C239 268, 236 263, 238 258 Z" fill="#FFFFFF" fill-opacity="0.85" stroke="#0F2142" stroke-width="2" />
+                  <path d="M242 254 L276 254 L278 261 C279 264, 276 267, 272 267 L246 267 C242 267, 239 264, 240 261 Z" fill="#FF6B5A" opacity="0.85" />
+                  <circle cx="255" cy="244" r="3" fill="#4EE2B8" />
+                  <circle cx="263" cy="238" r="2" fill="#4EE2B8" />
+                </svg>
+              </div>
+
+              <!-- Subtle Floating Credential Tag inside the Mint Arch on Desktop -->
+              <div class="hidden xl:flex flex-col gap-2 ml-6 text-navy-bg pr-10">
+                <span class="font-display font-bold text-xs uppercase tracking-wider bg-white/80 px-3 py-1 rounded-full self-start">
+                  USTC &middot; Pharmacy
+                </span>
+                <span class="font-display font-bold text-sm leading-snug">
+                  Gold Medalist<br />&amp; PI (6 Grants)
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. ABOUT & IMPACT SECTION (2-COLUMN BENTO) ==================== -->
+    <section id="about" class="py-16 sm:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mb-8">About &amp; Impact</h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+
+          <!-- Left Column: 2 Stacked Dark Navy Impact Cards -->
+          <div class="lg:col-span-6 flex flex-col gap-5">
+            <!-- Top Impact Card: 7+ Years + Colorful Analytics Bar Chart -->
+            <div class="flex-1 bg-navy-card border border-navy-border rounded-2xl p-6 flex items-center justify-between gap-4 hover:border-mint/40 transition-colors">
+              <div class="space-y-1.5">
+                <p class="font-display text-4xl sm:text-5xl font-bold text-coral leading-none">7+</p>
+                <p class="text-sm sm:text-base font-semibold text-white leading-snug pt-1">
+                  Years of Academic &amp;<br />Lab Experience
+                </p>
+                <p class="text-xs text-slate-400">2019 – Present at USTC</p>
+              </div>
+
+              <!-- Vibrant Multi-Colored Vertical Bar Chart SVG (matching mockup) -->
+              <div class="w-40 sm:w-48 h-28 shrink-0 flex items-end justify-end">
+                <svg viewBox="0 0 200 110" class="w-full h-full overflow-visible" aria-hidden="true">
+                  <!-- Subtle horizontal grid lines -->
+                  <line x1="16" y1="20" x2="195" y2="20" stroke="#1B335E" stroke-dasharray="3 3" stroke-width="1" />
+                  <line x1="16" y1="45" x2="195" y2="45" stroke="#1B335E" stroke-dasharray="3 3" stroke-width="1" />
+                  <line x1="16" y1="70" x2="195" y2="70" stroke="#1B335E" stroke-dasharray="3 3" stroke-width="1" />
+                  <line x1="16" y1="95" x2="195" y2="95" stroke="#334155" stroke-width="1.5" />
+                  <!-- Vertical axis -->
+                  <line x1="16" y1="12" x2="16" y2="95" stroke="#334155" stroke-width="1.5" />
+                  <!-- Colorful Bars -->
+                  <rect class="chart-bar" x="26" y="66" width="11" height="29" rx="3" fill="#3B82F6" />
+                  <rect class="chart-bar" x="43" y="52" width="11" height="43" rx="3" fill="#8B5CF6" />
+                  <rect class="chart-bar" x="60" y="62" width="11" height="33" rx="3" fill="#4EE2B8" />
+                  <rect class="chart-bar" x="77" y="42" width="11" height="53" rx="3" fill="#FF6B5A" />
+                  <rect class="chart-bar" x="94" y="54" width="11" height="41" rx="3" fill="#3B82F6" />
+                  <rect class="chart-bar" x="111" y="34" width="11" height="61" rx="3" fill="#8B5CF6" />
+                  <rect class="chart-bar" x="128" y="44" width="11" height="51" rx="3" fill="#4EE2B8" />
+                  <rect class="chart-bar" x="145" y="24" width="11" height="71" rx="3" fill="#FBBF24" />
+                  <rect class="chart-bar" x="162" y="36" width="11" height="59" rx="3" fill="#3B82F6" />
+                  <rect class="chart-bar" x="179" y="16" width="11" height="79" rx="3" fill="#FF6B5A" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- Bottom Impact Card: 23+ Published Journals + Lab/Document Vector Graphic -->
+            <div class="flex-1 bg-navy-card border border-navy-border rounded-2xl p-6 flex items-center justify-between gap-4 hover:border-coral/40 transition-colors">
+              <div class="space-y-1.5">
+                <p class="font-display text-4xl sm:text-5xl font-bold text-coral leading-none">23+</p>
+                <p class="text-sm sm:text-base font-semibold text-white leading-snug pt-1">
+                  Published<br />Journals
+                </p>
+                <p class="text-xs text-slate-400">+ 7 Under Review &amp; 6 Funded Grants</p>
+              </div>
+
+              <!-- Colorful Lab & Publication Vector Illustration -->
+              <div class="w-40 sm:w-48 h-28 shrink-0 flex items-center justify-end">
+                <svg viewBox="0 0 190 110" class="w-full h-full" aria-hidden="true">
+                  <!-- Research Paper Document -->
+                  <rect x="34" y="14" width="66" height="82" rx="8" fill="#E2E8F0" />
+                  <rect x="44" y="26" width="32" height="6" rx="3" fill="#3B82F6" />
+                  <rect x="44" y="38" width="46" height="4" rx="2" fill="#94A3B8" />
+                  <rect x="44" y="47" width="40" height="4" rx="2" fill="#94A3B8" />
+                  <!-- Mini Bars on Paper -->
+                  <rect x="44" y="66" width="8" height="20" rx="2" fill="#FF6B5A" />
+                  <rect x="56" y="58" width="8" height="28" rx="2" fill="#4EE2B8" />
+                  <rect x="68" y="62" width="8" height="24" rx="2" fill="#8B5CF6" />
+                  <rect x="80" y="54" width="8" height="32" rx="2" fill="#3B82F6" />
+
+                  <!-- Test Tube Rack & Colorful Vials (Right) -->
+                  <rect x="114" y="34" width="62" height="6" rx="3" fill="#475569" />
+                  <rect x="114" y="88" width="62" height="7" rx="3" fill="#475569" />
+                  <!-- Tube 1 -->
+                  <rect x="124" y="22" width="12" height="66" rx="6" fill="#1E293B" stroke="#94A3B8" stroke-width="1.5" />
+                  <rect x="125.5" y="54" width="9" height="32" rx="4.5" fill="#FF6B5A" />
+                  <!-- Tube 2 -->
+                  <rect x="142" y="16" width="12" height="72" rx="6" fill="#1E293B" stroke="#94A3B8" stroke-width="1.5" />
+                  <rect x="143.5" y="44" width="9" height="42" rx="4.5" fill="#4EE2B8" />
+                  <!-- Tube 3 -->
+                  <rect x="160" y="26" width="12" height="62" rx="6" fill="#1E293B" stroke="#94A3B8" stroke-width="1.5" />
+                  <rect x="161.5" y="58" width="9" height="28" rx="4.5" fill="#8B5CF6" />
+
+                  <!-- Floating Sparkle / Molecule Dots -->
+                  <circle cx="20" cy="34" r="5" fill="#4EE2B8" opacity="0.85" />
+                  <circle cx="108" cy="20" r="3.5" fill="#FF6B5A" />
+                  <circle cx="24" cy="78" r="4" fill="#8B5CF6" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: 4 Sleek Stacked Research Interest Rows with Gradient Square Icons -->
+          <div class="lg:col-span-6 flex flex-col justify-between gap-4">
+            <!-- Row 1: Purple-to-Blue -->
+            <div class="bg-navy-card/70 hover:bg-navy-card border border-navy-border rounded-2xl p-4 flex items-center gap-4 transition-colors">
+              <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-violetAccent to-blueAccent flex items-center justify-center shrink-0 shadow-md">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display text-base sm:text-lg font-bold text-white">Natural Product Chemistry</h3>
+                <p class="text-xs sm:text-sm text-slate-400 mt-0.5">Bioactive metabolites, medicinal flora, agro-residues &amp; endophytic fungi</p>
+              </div>
+            </div>
+
+            <!-- Row 2: Mint-to-Teal -->
+            <div class="bg-navy-card/70 hover:bg-navy-card border border-navy-border rounded-2xl p-4 flex items-center gap-4 transition-colors">
+              <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-mint to-teal-500 flex items-center justify-center shrink-0 shadow-md">
+                <svg class="w-7 h-7 text-navy-bg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display text-base sm:text-lg font-bold text-white">Functional Foods &amp; Nutraceuticals</h3>
+                <p class="text-xs sm:text-sm text-slate-400 mt-0.5">Plant nutrients &amp; agricultural by-products for disease-preventing supplements</p>
+              </div>
+            </div>
+
+            <!-- Row 3: Coral-to-Orange -->
+            <div class="bg-navy-card/70 hover:bg-navy-card border border-navy-border rounded-2xl p-4 flex items-center gap-4 transition-colors">
+              <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-coral to-orange-400 flex items-center justify-center shrink-0 shadow-md">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display text-base sm:text-lg font-bold text-white">Metabolic &amp; Chronic Pharmacology</h3>
+                <p class="text-xs sm:text-sm text-slate-400 mt-0.5">Diabetes mellitus, oxidative stress &amp; oncogenesis via in vitro and in vivo models</p>
+              </div>
+            </div>
+
+            <!-- Row 4: Indigo-to-Pink -->
+            <div class="bg-navy-card/70 hover:bg-navy-card border border-navy-border rounded-2xl p-4 flex items-center gap-4 transition-colors">
+              <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center shrink-0 shadow-md">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l-2-1v-2.5" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display text-base sm:text-lg font-bold text-white">Computer-Aided Drug Design (CADD)</h3>
+                <p class="text-xs sm:text-sm text-slate-400 mt-0.5">Molecular docking, MD simulations, DFT &amp; ADMET pharmacokinetics</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 4. ACADEMIC TIMELINE (ALTERNATING CENTER LINE) ==================== -->
+    <section id="timeline" class="py-16 sm:py-20 border-t border-navy-border/50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mb-12">Academic timeline</h2>
+
+        <div class="relative">
+          <!-- Vertical Center Line (Left-aligned on Mobile, Centered on md+) -->
+          <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-coral via-mint via-indigo-500 to-amberAccent opacity-65 md:-translate-x-1/2"></div>
+
+          <div class="space-y-10 sm:space-y-12">
+
+            <!-- Node 1: Coral (Right Side on Desktop) -->
+            <div class="relative flex flex-col md:flex-row items-start md:items-center">
+              <div class="hidden md:block md:w-1/2 md:pr-10"></div>
+              <!-- Glowing Center Dot -->
+              <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-coral border-2 border-navy-bg shadow-glowCoral -translate-x-1/2 mt-1.5 md:mt-0 z-10"></div>
+              <!-- Content Right -->
+              <div class="pl-12 md:pl-10 md:w-1/2">
+                <div class="inline-flex items-center px-3.5 py-1 rounded-full bg-coral text-white text-xs font-bold tracking-wide mb-2.5 shadow-sm">
+                  2022 – Present
+                </div>
+                <h3 class="font-display text-lg font-bold text-white">Assistant Professor, Dept. of Pharmacy</h3>
+                <p class="text-sm text-slate-400 mt-1 leading-relaxed">
+                  University of Science and Technology Chittagong (USTC) &amp; Lab Coordinator (Biomedical Research &amp; Animal Experimental Labs)
+                </p>
+              </div>
+            </div>
+
+            <!-- Node 2: Mint (Left Side on Desktop) -->
+            <div class="relative flex flex-col md:flex-row items-start md:items-center">
+              <!-- Content Left -->
+              <div class="pl-12 md:pl-0 md:pr-10 md:w-1/2 md:text-right">
+                <div class="inline-flex items-center px-3.5 py-1 rounded-full bg-mint text-navy-bg text-xs font-bold tracking-wide mb-2.5 shadow-sm">
+                  2019 – 2022
+                </div>
+                <h3 class="font-display text-lg font-bold text-white">Lecturer, Dept. of Pharmacy</h3>
+                <p class="text-sm text-slate-400 mt-1 leading-relaxed">
+                  USTC — Taught Pharmacology, Biopharmaceutics, Basic Biochemistry, Clinical Pharmacy, Pharmaceutical Analysis &amp; CADD
+                </p>
+              </div>
+              <!-- Glowing Center Dot -->
+              <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-mint border-2 border-navy-bg shadow-glowMint -translate-x-1/2 mt-1.5 md:mt-0 z-10"></div>
+              <div class="hidden md:block md:w-1/2 md:pl-10"></div>
+            </div>
+
+            <!-- Node 3: Indigo/Purple (Right Side on Desktop) -->
+            <div class="relative flex flex-col md:flex-row items-start md:items-center">
+              <div class="hidden md:block md:w-1/2 md:pr-10"></div>
+              <!-- Glowing Center Dot -->
+              <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-indigo-500 border-2 border-navy-bg shadow-glowIndigo -translate-x-1/2 mt-1.5 md:mt-0 z-10"></div>
+              <!-- Content Right -->
+              <div class="pl-12 md:pl-10 md:w-1/2">
+                <div class="inline-flex items-center px-3.5 py-1 rounded-full bg-indigo-500 text-white text-xs font-bold tracking-wide mb-2.5 shadow-sm">
+                  2015 – 2018
+                </div>
+                <h3 class="font-display text-lg font-bold text-white">M.Pharm (Thesis) — 1st Position</h3>
+                <p class="text-sm text-slate-400 mt-1 leading-relaxed">
+                  USTC | cGPA 3.94/4.00 | Thesis on Antidiabetic &amp; Organ Protective Potential of Australian Lupins (supported by CSU, Australia)
+                </p>
+              </div>
+            </div>
+
+            <!-- Node 4: Amber/Yellow (Left Side on Desktop) -->
+            <div class="relative flex flex-col md:flex-row items-start md:items-center">
+              <!-- Content Left -->
+              <div class="pl-12 md:pl-0 md:pr-10 md:w-1/2 md:text-right">
+                <div class="inline-flex items-center px-3.5 py-1 rounded-full bg-amberAccent text-navy-bg text-xs font-bold tracking-wide mb-2.5 shadow-sm">
+                  2011 – 2015
+                </div>
+                <h3 class="font-display text-lg font-bold text-white">B.Pharm (Hons.) — 1st Position</h3>
+                <p class="text-sm text-slate-400 mt-1 leading-relaxed">
+                  USTC | cGPA 3.95/4.00 | Chancellor Gold Medal &amp; Fouzia Siraji Award | Insulin Transdermal Nanoparticles Project
+                </p>
+              </div>
+              <!-- Glowing Center Dot -->
+              <div class="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-amberAccent border-2 border-navy-bg shadow-glowAmber -translate-x-1/2 mt-1.5 md:mt-0 z-10"></div>
+              <div class="hidden md:block md:w-1/2 md:pl-10"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5. FEATURED PUBLICATIONS (SEARCH, PILLS & 3-COL GRID) ==================== -->
+    <section id="publications" class="py-16 sm:py-20 border-t border-navy-border/50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6">
+          <div>
+            <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">Featured Publications</h2>
+            <p class="text-xs sm:text-sm text-slate-400 mt-1">
+              14 selected peer-reviewed articles (of 23 published) &amp; 7 manuscripts under review
+            </p>
+          </div>
+          <span class="text-xs text-slate-400 font-medium">
+            Showing <strong id="pub-visible-count" class="text-mint">6</strong> of <strong id="pub-total-count" class="text-white">21</strong>
+          </span>
+        </div>
+
+        <!-- Search Input & Interactive Pill Filters -->
+        <div class="flex flex-col lg:flex-row lg:items-center gap-3.5 mb-8">
+          <div class="relative w-full lg:w-72 shrink-0">
+            <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              id="pub-search"
+              type="text"
+              placeholder="Search publications, journals, keywords..."
+              class="w-full pl-10 pr-4 py-2.5 rounded-full bg-navy-input border border-navy-border text-xs sm:text-sm text-white placeholder:text-slate-400 focus:outline-none focus:border-mint transition-colors"
+            />
+          </div>
+
+          <!-- Filter Pills -->
+          <div id="pub-filter-bar" class="flex flex-wrap items-center gap-2" role="group" aria-label="Filter Publications">
+            <button type="button" data-filter="All" class="pub-pill px-4 py-2 rounded-full text-xs font-semibold bg-mint text-navy-bg transition-colors">All (21)</button>
+            <button type="button" data-filter="2026" class="pub-pill px-4 py-2 rounded-full text-xs font-semibold bg-navy-card text-slate-300 border border-navy-border hover:border-mint/50 transition-colors">2026</button>
+            <button type="button" data-filter="2025" class="pub-pill px-4 py-2 rounded-full text-xs font-semibold bg-navy-card text-slate-300 border border-navy-border hover:border-mint/50 transition-colors">2025</button>
+            <button type="button" data-filter="2024" class="pub-pill px-4 py-2 rounded-full text-xs font-semibold bg-navy-card text-slate-300 border border-navy-border hover:border-mint/50 transition-colors">2024</button>
+            <button type="button" data-filter="2023Earlier" class="pub-pill px-4 py-2 rounded-full text-xs font-semibold bg-navy-card text-slate-300 border border-navy-border hover:border-mint/50 transition-colors">2023 &amp; Earlier</button>
+            <button type="button" data-filter="UnderReview" class="pub-pill px-4 py-2 rounded-full text-xs font-semibold bg-navy-card text-slate-300 border border-navy-border hover:border-amberAccent/60 transition-colors">Under Review (7)</button>
+          </div>
+        </div>
+
+        <!-- 3-Column Publication Card Grid -->
+        <div id="publications-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+        <!-- Empty State -->
+        <div id="pub-empty" class="hidden text-center py-12 px-4 rounded-2xl bg-navy-card border border-navy-border">
+          <p class="font-display text-base font-bold text-white">No publications matched your filter</p>
+          <p class="text-xs text-slate-400 mt-1">Try a different keyword or reset the active category.</p>
+          <button
+            type="button"
+            onclick="resetPubFilters()"
+            class="mt-4 px-5 py-2 rounded-full bg-coral text-white text-xs font-semibold hover:bg-[#ff5642] transition-colors"
+          >
+            Reset Filters
+          </button>
+        </div>
+
+        <!-- Show All / Show Less Toggle -->
+        <div id="pub-toggle-wrap" class="mt-8 text-center">
+          <button
+            id="pub-toggle-btn"
+            type="button"
+            onclick="toggleShowAllPublications()"
+            class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-navy-card hover:bg-navy-elevated border border-navy-border hover:border-mint/50 text-xs sm:text-sm font-semibold text-white transition-all"
+          >
+            <span id="pub-toggle-text">Show All Publications (21)</span>
+            <svg id="pub-toggle-icon" class="w-4 h-4 text-mint transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. TECHNICAL & LAB SKILLS (3-COL MOCKUP CARDS) ==================== -->
+    <section id="skills" class="py-16 sm:py-20 border-t border-navy-border/50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between gap-4 mb-8">
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-white">Technical &amp; Lab Skills</h2>
+          <span class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-navy-card border border-navy-border text-xs text-slate-300">
+            6 Core Domains
+            <svg class="w-3.5 h-3.5 text-mint" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <!-- Skill Card 1 -->
+          <article class="bg-navy-card border border-navy-border rounded-2xl p-6 flex flex-col justify-between hover:border-coral/45 transition-colors">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <h3 class="font-display text-base sm:text-lg font-bold text-white">Phytochemical &amp; Analytical</h3>
+                <span class="px-2.5 py-0.5 rounded-full bg-coral text-white text-[11px] font-bold shrink-0">Core</span>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Solvent extraction, Kupchan liquid-liquid partitioning, column chromatography, TLC, preparative TLC, and HPLC operation &amp; method development.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-navy-border/80 flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2 text-slate-400">
+                <span>Proficiency</span>
+                <span class="inline-flex items-center gap-1">
+                  <span class="w-2.5 h-2.5 rounded-full bg-coral"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-coral"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-coral"></span>
+                </span>
+              </div>
+              <span class="text-[11px] text-slate-400 font-medium">HPLC &middot; TLC</span>
+            </div>
+          </article>
+
+          <!-- Skill Card 2 -->
+          <article class="bg-navy-card border border-navy-border rounded-2xl p-6 flex flex-col justify-between hover:border-amberAccent/45 transition-colors">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <h3 class="font-display text-base sm:text-lg font-bold text-white">Pharmacological Assays</h3>
+                <span class="px-2.5 py-0.5 rounded-full bg-amberAccent text-navy-bg text-[11px] font-bold shrink-0">Advanced</span>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                In vitro antioxidant assays (DPPH, ABTS), enzymatic inhibition protocols, and cellular cytotoxicity evaluations for bioactive screening.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-navy-border/80 flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2 text-slate-400">
+                <span>Proficiency</span>
+                <span class="inline-flex items-center gap-1">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amberAccent"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-mint"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-mint"></span>
+                </span>
+              </div>
+              <span class="text-[11px] text-slate-400 font-medium">DPPH &middot; ABTS</span>
+            </div>
+          </article>
+
+          <!-- Skill Card 3 -->
+          <article class="bg-navy-card border border-navy-border rounded-2xl p-6 flex flex-col justify-between hover:border-mint/45 transition-colors">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <h3 class="font-display text-base sm:text-lg font-bold text-white">Animal &amp; In Vivo Models</h3>
+                <span class="px-2.5 py-0.5 rounded-full bg-mint text-navy-bg text-[11px] font-bold shrink-0">Expert</span>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Swiss albino mice &amp; Wistar rats, alloxan/STZ diabetes, EAC tumor models, analgesic hot-plate/writhing, histamine/carrageenan &amp; neuro-behavioral models.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-navy-border/80 flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2 text-slate-400">
+                <span>Proficiency</span>
+                <span class="inline-flex items-center gap-1">
+                  <span class="w-2.5 h-2.5 rounded-full bg-mint"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-mint"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-mint"></span>
+                </span>
+              </div>
+              <span class="text-[11px] text-slate-400 font-medium">icddr,b Trained</span>
+            </div>
+          </article>
+
+          <!-- Skill Card 4 -->
+          <article class="bg-navy-card border border-navy-border rounded-2xl p-6 flex flex-col justify-between hover:border-mint/45 transition-colors">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <h3 class="font-display text-base sm:text-lg font-bold text-white">Computational Biology (CADD)</h3>
+                <span class="px-2.5 py-0.5 rounded-full bg-mint text-navy-bg text-[11px] font-bold shrink-0">Expert</span>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Molecular docking (PyRx, AutoDock Vina, Schrödinger), molecular dynamics (MD) simulations, Density Functional Theory (DFT), and ADMET prediction.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-navy-border/80 flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2 text-slate-400">
+                <span>Proficiency</span>
+                <span class="inline-flex items-center gap-1">
+                  <span class="w-2.5 h-2.5 rounded-full bg-mint"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-blueAccent"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-violetAccent"></span>
+                </span>
+              </div>
+              <span class="text-[11px] text-slate-400 font-medium">Vina &middot; MD &middot; DFT</span>
+            </div>
+          </article>
+
+          <!-- Skill Card 5 -->
+          <article class="bg-navy-card border border-navy-border rounded-2xl p-6 flex flex-col justify-between hover:border-coral/45 transition-colors">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <h3 class="font-display text-base sm:text-lg font-bold text-white">Microbiological &amp; Endophytes</h3>
+                <span class="px-2.5 py-0.5 rounded-full bg-coral text-white text-[11px] font-bold shrink-0">Core</span>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Isolation &amp; characterization of endophytic fungi from Chittagong Hill Tracts medicinal plants, biomass production, AMR profiling &amp; metabolite evaluation.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-navy-border/80 flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2 text-slate-400">
+                <span>Proficiency</span>
+                <span class="inline-flex items-center gap-1">
+                  <span class="w-2.5 h-2.5 rounded-full bg-coral"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-coral"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-mint"></span>
+                </span>
+              </div>
+              <span class="text-[11px] text-slate-400 font-medium">AMR &middot; Fungi</span>
+            </div>
+          </article>
+
+          <!-- Skill Card 6 -->
+          <article class="bg-navy-card border border-navy-border rounded-2xl p-6 flex flex-col justify-between hover:border-amberAccent/45 transition-colors">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <h3 class="font-display text-base sm:text-lg font-bold text-white">Research Grants &amp; Honors</h3>
+                <span class="px-2.5 py-0.5 rounded-full bg-amberAccent text-navy-bg text-[11px] font-bold shrink-0">6 Grants</span>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Principal Investigator for MOST Special &amp; R&amp;D Research Grants (SRG-251333, SRG-241248, R&amp;D-2420200), URC Grants, and Best Poster Award (CU, 2024).
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-navy-border/80 flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2 text-slate-400">
+                <span>Track Record</span>
+                <span class="inline-flex items-center gap-1">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amberAccent"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-amberAccent"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-coral"></span>
+                </span>
+              </div>
+              <span class="text-[11px] text-slate-400 font-medium">MOST &middot; URC</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 7. COMPACT DARK-NAVY TABBED STRIP (GRANTS, CONFERENCES, SERVICE & REFERENCES) ==================== -->
+    <section id="grants" class="py-14 sm:py-16 border-t border-navy-border/50">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-navy-card border border-navy-border rounded-2xl p-5 sm:p-7">
+          <!-- Tab Buttons -->
+          <div class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-navy-border">
+            <h2 class="font-display text-xl sm:text-2xl font-bold text-white">Grants, Conferences &amp; Credentials</h2>
+            <div class="flex flex-wrap gap-2" role="tablist" aria-label="Additional CV Details">
+              <button type="button" role="tab" aria-selected="true" data-extra-tab="grants" class="extra-tab px-4 py-2 rounded-full text-xs font-semibold bg-mint text-navy-bg transition-colors">
+                Research Grants (6)
+              </button>
+              <button type="button" role="tab" aria-selected="false" data-extra-tab="conferences" class="extra-tab px-4 py-2 rounded-full text-xs font-semibold bg-navy-input text-slate-300 border border-navy-border hover:border-mint/50 transition-colors">
+                Conferences (4 Selected)
+              </button>
+              <button type="button" role="tab" aria-selected="false" data-extra-tab="training" class="extra-tab px-4 py-2 rounded-full text-xs font-semibold bg-navy-input text-slate-300 border border-navy-border hover:border-mint/50 transition-colors">
+                Training &amp; Service
+              </button>
+              <button type="button" role="tab" aria-selected="false" data-extra-tab="references" class="extra-tab px-4 py-2 rounded-full text-xs font-semibold bg-navy-input text-slate-300 border border-navy-border hover:border-mint/50 transition-colors">
+                References
+              </button>
+            </div>
+          </div>
+
+          <!-- Panel 1: Research Grants (6) -->
+          <div id="extra-panel-grants" class="extra-panel pt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl bg-navy-input/80 border border-navy-border">
+              <div class="flex items-center justify-between gap-2 mb-2 text-[11px]">
+                <span class="px-2 py-0.5 rounded-full bg-coral/20 text-coral font-semibold">Principal Investigator</span>
+                <span class="text-slate-400">SRG-251333</span>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-white leading-snug">Bioactive Secondary Metabolites from Rhizome Endophytes of <em>Alpinia</em> Species in the Chittagong Hill Tracts</p>
+              <p class="text-[11px] text-mint mt-2">Special Research Grant 2025–2026 &middot; MOST, Bangladesh</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-navy-input/80 border border-navy-border">
+              <div class="flex items-center justify-between gap-2 mb-2 text-[11px]">
+                <span class="px-2 py-0.5 rounded-full bg-coral/20 text-coral font-semibold">Principal Investigator</span>
+                <span class="text-slate-400">SRG-241248</span>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-white leading-snug">Comparative Assessment of Nutritional &amp; Biofunctional Potential of Fifteen Varieties of <em>Lablab purpureus</em></p>
+              <p class="text-[11px] text-mint mt-2">Special Research Grant 2024–2025 &middot; MOST, Bangladesh</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-navy-input/80 border border-navy-border">
+              <div class="flex items-center justify-between gap-2 mb-2 text-[11px]">
+                <span class="px-2 py-0.5 rounded-full bg-coral/20 text-coral font-semibold">Principal Investigator</span>
+                <span class="text-slate-400">R&amp;D-2420200</span>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-white leading-snug">In vivo Antidiabetic, Antiobesity &amp; Organ Protective Potential of Two <em>Selenicereus</em> Species on Rat Models</p>
+              <p class="text-[11px] text-mint mt-2">R&amp;D Research Grant 2024–2025 &middot; MOST, Bangladesh</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-navy-input/80 border border-navy-border">
+              <div class="flex items-center justify-between gap-2 mb-2 text-[11px]">
+                <span class="px-2 py-0.5 rounded-full bg-coral/20 text-coral font-semibold">Principal Investigator</span>
+                <span class="text-slate-400">URC Call 2</span>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-white leading-snug">Functional &amp; Biofunctional Evaluation with Bioactive Metabolite Profiling of <em>Lablab purpureus</em> (Sweet)</p>
+              <p class="text-[11px] text-slate-400 mt-2">University Research Cell (URC), USTC</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-navy-input/80 border border-navy-border">
+              <div class="flex items-center justify-between gap-2 mb-2 text-[11px]">
+                <span class="px-2 py-0.5 rounded-full bg-coral/20 text-coral font-semibold">Principal Investigator</span>
+                <span class="text-slate-400">URC Call 4</span>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-white leading-snug">Chemotherapeutic Potential Study of Novel Compounds from <em>Lablab purpureus</em> against Carcinoma &amp; Resistant Microbes</p>
+              <p class="text-[11px] text-slate-400 mt-2">University Research Cell (URC), USTC</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-navy-input/80 border border-navy-border">
+              <div class="flex items-center justify-between gap-2 mb-2 text-[11px]">
+                <span class="px-2 py-0.5 rounded-full bg-mint/15 text-mint font-semibold">Co-Investigator</span>
+                <span class="text-slate-400">URC Call 5</span>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-white leading-snug">Anticancer and Antimicrobial Study and Isolation of Phytocompounds from <em>Musa acuminata</em></p>
+              <p class="text-[11px] text-slate-400 mt-2">University Research Cell (URC), USTC</p>
+            </div>
+          </div>
+
+          <!-- Panel 2: Conferences (4 Selected of 09) -->
+          <div id="extra-panel-conferences" class="extra-panel hidden pt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-navy-input/80 border border-amberAccent/40">
+              <div class="flex flex-wrap items-center gap-2 mb-2 text-[11px]">
+                <span class="px-2 py-0.5 rounded-full bg-amberAccent text-navy-bg font-bold">Best Poster Award</span>
+                <span class="text-slate-400">2024 &middot; University of Chittagong</span>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-white leading-snug">Anti-inflammatory and analgesic potential study with bioactive phytochemicals profiling of <em>Amoora chittagonga</em></p>
+              <p class="text-[11px] text-slate-400 mt-1.5">International Conference on Biotechnology, CU (Poster Presentation)</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-navy-input/80 border border-navy-border">
+              <div class="flex flex-wrap items-center gap-2 mb-2 text-[11px]">
+                <span class="px-2 py-0.5 rounded-full bg-mint/15 text-mint font-semibold">Oral Presentation</span>
+                <span class="text-slate-400">2023 &middot; UKM, Malaysia</span>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-white leading-snug"><em>Lablab purpureus</em> (Sweet): A Common Bangladeshi Vegetable with Promising Therapeutic Potentials</p>
+              <p class="text-[11px] text-slate-400 mt-1.5">International Conference on Pharmaceutical Sciences, Faculty of Pharmacy, UKM</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-navy-input/80 border border-navy-border">
+              <div class="flex flex-wrap items-center gap-2 mb-2 text-[11px]">
+                <span class="px-2 py-0.5 rounded-full bg-navy-card text-slate-300 border border-navy-border">Poster Presentation</span>
+                <span class="text-slate-400">2024 &middot; University of Chittagong</span>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-white leading-snug">Investigation of antioxidant and antidiabetic potential with GC-MS based metabolite profiling of <em>Musa acuminata</em> seeds</p>
+              <p class="text-[11px] text-slate-400 mt-1.5">International Conference on Biotechnology, CU</p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-navy-input/80 border border-navy-border">
+              <div class="flex flex-wrap items-center gap-2 mb-2 text-[11px]">
+                <span class="px-2 py-0.5 rounded-full bg-navy-card text-slate-300 border border-navy-border">Poster Presentation</span>
+                <span class="text-slate-400">2023 &middot; UKM, Malaysia</span>
+              </div>
+              <p class="text-xs sm:text-sm font-semibold text-white leading-snug">Evaluation of Antioxidant and Anticancer Activity of <em>Tinospora cordifolia</em> against Ehrlich Ascites Carcinoma</p>
+              <p class="text-[11px] text-slate-400 mt-1.5">International Conference on Pharmaceutical Sciences, Faculty of Pharmacy, UKM</p>
+            </div>
+          </div>
+
+          <!-- Panel 3: Training & Institutional Service -->
+          <div id="extra-panel-training" class="extra-panel hidden pt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-display text-sm font-bold text-mint uppercase tracking-wider mb-3">Professional Trainings</h3>
+              <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+                <li class="p-3 rounded-xl bg-navy-input/80 border border-navy-border"><strong class="text-white">CADD – Schrödinger Software</strong> &middot; NovusR (2021)</li>
+                <li class="p-3 rounded-xl bg-navy-input/80 border border-navy-border"><strong class="text-white">HPLC Operation &amp; Method Development</strong> &middot; USTC (2021)</li>
+                <li class="p-3 rounded-xl bg-navy-input/80 border border-navy-border"><strong class="text-white">Laboratory Animal Science &amp; Ethical Guidelines</strong> &middot; icddr,b (1-week)</li>
+                <li class="p-3 rounded-xl bg-navy-input/80 border border-navy-border"><strong class="text-white">Industrial Pharmacy Training</strong> &middot; Incepta Pharmaceuticals Ltd. (Apr–May 2015)</li>
+                <li class="p-3 rounded-xl bg-navy-input/80 border border-navy-border"><strong class="text-white">Bioinformatics &amp; Computational Biology</strong> &middot; USTC (2012)</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="font-display text-sm font-bold text-coral uppercase tracking-wider mb-3">Administrative &amp; Institutional Services</h3>
+              <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+                <li class="p-3.5 rounded-xl bg-navy-input/80 border border-navy-border">
+                  <strong class="text-white block">Program Coordinator, B.Pharm (Hons.) Program</strong>
+                  <span class="text-xs text-slate-400">Department of Pharmacy, USTC</span>
+                </li>
+                <li class="p-3.5 rounded-xl bg-navy-input/80 border border-navy-border">
+                  <strong class="text-white block">Assistant Advisor, Student Welfare Advisory Committee (SWAC)</strong>
+                  <span class="text-xs text-slate-400">University of Science and Technology Chittagong (USTC)</span>
+                </li>
+                <li class="p-3.5 rounded-xl bg-navy-input/80 border border-navy-border">
+                  <strong class="text-white block">General Secretary, USTC Pharma Club</strong>
+                  <span class="text-xs text-slate-400">January 2023 – Present</span>
+                </li>
+                <li class="p-3.5 rounded-xl bg-navy-input/80 border border-navy-border">
+                  <strong class="text-white block">Pharmacist (Register "A") Registration</strong>
+                  <span class="text-xs text-mint">Registration No. 10450 (Issued 28th August 2015)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Panel 4: Academic References -->
+          <div id="extra-panel-references" class="extra-panel hidden pt-6 grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="p-5 rounded-xl bg-navy-input/80 border border-navy-border">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-mint">Reference 01</span>
+              <h3 class="font-display text-lg font-bold text-white mt-1">Mr. Abdul Motaleb Bhuiyan</h3>
+              <p class="text-sm text-slate-300 mt-0.5">Associate Professor, Department of Pharmacy</p>
+              <p class="text-xs text-slate-400">University of Science and Technology Chittagong (USTC)</p>
+              <div class="mt-4 pt-3 border-t border-navy-border text-xs text-slate-300 space-y-1">
+                <p>Contact: <a href="tel:+8801818104698" class="text-white hover:text-mint">+8801818104698</a></p>
+                <p>Email: <a href="mailto:motaleb.bd@gmail.com" class="text-mint hover:underline">motaleb.bd@gmail.com</a></p>
+              </div>
+            </div>
+
+            <div class="p-5 rounded-xl bg-navy-input/80 border border-navy-border">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-coral">Reference 02</span>
+              <h3 class="font-display text-lg font-bold text-white mt-1">Dr. Kishor Mazumder</h3>
+              <p class="text-sm text-slate-300 mt-0.5">Professor, Department of Pharmacy</p>
+              <p class="text-xs text-slate-400">Jessore University of Science &amp; Technology (JUST)</p>
+              <div class="mt-4 pt-3 border-t border-navy-border text-xs text-slate-300 space-y-1">
+                <p>Contact: <a href="tel:01817754648" class="text-white hover:text-mint">01817-754648</a></p>
+                <p>Email: <a href="mailto:kmazumder@just.ac.bd" class="text-mint hover:underline">kmazumder@just.ac.bd</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== 8. FOOTER SECTION (EXACT MOCKUP BAND) ==================== -->
+  <footer id="contact" class="bg-navy-elevated border-t border-navy-border pt-14 pb-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-display text-2xl sm:text-3xl font-bold text-white mb-8">Connect &amp; Academic Profiles</h2>
+
+      <!-- Prominent Horizontal Row of White Typography Profile Links -->
+      <div class="flex flex-wrap items-center justify-between gap-6 sm:gap-10 py-6 border-y border-navy-border/80">
+        <a
+          href="https://www.researchgate.net/profile/Md-Hossain-94"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-display text-lg sm:text-xl font-bold text-white hover:text-mint transition-colors tracking-tight"
+        >
+          ResearchGate
+        </a>
+
+        <a
+          href="https://scholar.google.com/citations?user=dtm1YboAAAAJ"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-display text-lg sm:text-xl font-bold text-white hover:text-mint transition-colors tracking-tight"
+        >
+          Google Scholar
+        </a>
+
+        <a
+          href="https://orcid.org/0000-0002-4361-5481"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-display text-lg sm:text-xl font-bold text-white hover:text-mint transition-colors tracking-widest"
+        >
+          ORCID
+        </a>
+
+        <a
+          href="https://www.scopus.com/authid/detail.uri?authorId=57211377144"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 font-display text-lg sm:text-xl font-bold text-white hover:text-mint transition-colors"
+        >
+          <span>Scopus</span>
+          <span class="px-1.5 py-0.5 rounded bg-white text-navy-bg text-xs font-extrabold">ID</span>
+        </a>
+      </div>
+
+      <!-- Contact Details Line (Click-to-Copy Email, Phone, Location) -->
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs sm:text-sm text-slate-300 text-center">
+        <button
+          type="button"
+          onclick="copyToClipboard('rabiul.hossain@ustc.ac.bd', 'Email copied: rabiul.hossain@ustc.ac.bd')"
+          class="inline-flex items-center gap-2 hover:text-mint transition-colors cursor-pointer"
+          title="Click to copy email"
+        >
+          <svg class="w-4 h-4 text-mint" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <span>rabiul.hossain@ustc.ac.bd</span>
+        </button>
+
+        <span class="hidden sm:inline text-navy-border">&bull;</span>
+
+        <a href="tel:+8801813204780" class="inline-flex items-center gap-2 hover:text-mint transition-colors">
+          <svg class="w-4 h-4 text-coral" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+          <span>+880 1813204780</span>
+        </a>
+
+        <span class="hidden sm:inline text-navy-border">&bull;</span>
+
+        <span class="inline-flex items-center gap-2 text-slate-400">
+          <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <span>East Durgapur, Jorargonj, Mirsharai, Chittagong-4323, Bangladesh</span>
+        </span>
+      </div>
+
+      <!-- Bottom Row of 4 Subtle Dark-Square Icon Buttons (matching mockup) -->
+      <div class="mt-7 flex items-center justify-center gap-3">
+        <a
+          href="mailto:rabiul.hossain@ustc.ac.bd"
+          aria-label="Send Email"
+          class="w-9 h-9 rounded-lg bg-navy-card border border-navy-border flex items-center justify-center text-slate-300 hover:text-mint hover:border-mint/50 transition-colors"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </a>
+
+        <a
+          href="https://scholar.google.com/citations?user=dtm1YboAAAAJ"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Google Scholar"
+          class="w-9 h-9 rounded-lg bg-navy-card border border-navy-border flex items-center justify-center text-slate-300 hover:text-mint hover:border-mint/50 transition-colors"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 13.73L4.74 12.8 3 13.75 12 19l9-5.25-1.74-.95L12 16.73z" />
+          </svg>
+        </a>
+
+        <a
+          href="https://orcid.org/0000-0002-4361-5481"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="ORCID"
+          class="w-9 h-9 rounded-lg bg-navy-card border border-navy-border flex items-center justify-center text-xs font-bold text-slate-300 hover:text-mint hover:border-mint/50 transition-colors"
+        >
+          iD
+        </a>
+
+      </div>
+
+      <p class="text-center text-[11px] text-slate-500 mt-6">
+        &copy; 2026 Md. Rabiul Hossain &middot; Assistant Professor, Department of Pharmacy, USTC.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==================== 9. PRINTABLE CV MODAL (CLEAN WHITE PRINT VIEW) ==================== -->
+  <div
+    id="cv-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-xs p-4 overflow-y-auto"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cv-modal-title"
+  >
+    <div class="relative w-full max-w-3xl bg-white text-slate-900 rounded-2xl shadow-2xl my-8 overflow-hidden">
+      <!-- Modal Header (Hidden on Print) -->
+      <div class="no-print flex items-center justify-between px-6 py-4 bg-slate-50 border-b border-slate-200">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-mint"></span>
+          <h3 id="cv-modal-title" class="font-display text-sm font-bold text-slate-800">Curriculum Vitae — Md. Rabiul Hossain</h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            onclick="window.print()"
+            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-coral hover:bg-[#ff5642] text-white text-xs font-semibold transition-colors"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+            </svg>
+            <span>Print / Save PDF</span>
+          </button>
+          <button
+            type="button"
+            onclick="closeCvModal()"
+            class="p-2 rounded-lg text-slate-500 hover:bg-slate-200 hover:text-slate-900 transition-colors"
+            aria-label="Close Modal"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Printable CV Summary Content -->
+      <div id="cv-printable-area" class="p-6 sm:p-8 max-h-[75vh] overflow-y-auto space-y-5 text-sm bg-white text-slate-900">
+        <div class="border-b-2 border-slate-900 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <h2 class="font-display text-2xl font-bold text-slate-900">Md. Rabiul Hossain</h2>
+            <p class="font-semibold text-teal-700 text-sm">Assistant Professor, Department of Pharmacy, USTC</p>
+            <p class="text-xs text-slate-600 mt-0.5">Register "A" Pharmacist &middot; Reg. No. 10450 (Issued 28th August 2015)</p>
+            <p class="text-xs text-slate-500">East Durgapur, Jorargonj, Mirsharai, Chittagong-4323, Bangladesh</p>
+          </div>
+          <div class="text-xs text-slate-600 sm:text-right space-y-0.5">
+            <p>rabiul.hossain@ustc.ac.bd</p>
+            <p>+880 1813204780</p>
+            <p>ORCID: 0000-0002-4361-5481</p>
+            <p>Scopus ID: 57211377144</p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-display text-xs font-bold uppercase tracking-wider text-teal-800 mb-1.5">Academic Background</h4>
+          <ul class="space-y-1.5 text-xs text-slate-700 leading-relaxed">
+            <li><strong class="text-slate-900">Master of Pharmacy (Thesis)</strong>, USTC (2015–2018) &middot; cGPA: 3.94/4.00 (1st Position). Thesis: <em>Antidiabetic and Organ Protective Potential of Processed and Unprocessed Nine Cultivars of Australian Lupins</em> (supported by CSU, Australia).</li>
+            <li><strong class="text-slate-900">Bachelor of Pharmacy (Honors)</strong>, USTC (2011–2015) &middot; cGPA: 3.95/4.00 (1st Position, Chancellor Gold Medalist, Fouzia Siraji Award).</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-display text-xs font-bold uppercase tracking-wider text-teal-800 mb-1.5">Academic &amp; Leadership Experience</h4>
+          <ul class="space-y-1 text-xs text-slate-700 leading-relaxed">
+            <li><strong class="text-slate-900">Assistant Professor</strong>, Dept. of Pharmacy, USTC (28th Feb 2022 – Present) &middot; <strong class="text-slate-900">Lecturer</strong> (10th Jan 2019 – 27th Feb 2022).</li>
+            <li><strong class="text-slate-900">Laboratory Coordinator:</strong> Centre for Advanced Biomedical Research Lab &amp; Animal Experimental Lab.</li>
+            <li><strong class="text-slate-900">Institutional Services:</strong> Program Coordinator (B.Pharm Hons.), Assistant Advisor (SWAC), General Secretary (USTC Pharma Club).</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-display text-xs font-bold uppercase tracking-wider text-teal-800 mb-1.5">Research Output &amp; Grants</h4>
+          <p class="text-xs text-slate-700 leading-relaxed">
+            <strong>23 Published Articles</strong> &middot; <strong>7 Manuscripts Under Review</strong> (Wiley &amp; Elsevier) &middot; <strong>9 Conference Proceedings</strong> (Best Poster Award 2024, CU) &middot; <strong>6 Research Grants</strong> (MOST: SRG-251333, SRG-241248, R&amp;D-2420200; URC Call 2, 4, 5).
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-display text-xs font-bold uppercase tracking-wider text-teal-800 mb-1.5">Technical Competencies &amp; References</h4>
+          <p class="text-xs text-slate-700 leading-relaxed mb-2">
+            HPLC, Kupchan Partitioning, Column/Prep-TLC, DPPH/ABTS/Cytotoxicity, Rodent Models (Diabetes, EAC Tumor, Analgesic, Anti-inflammatory, Neuro-behavioral), Endophytic Fungi, AutoDock Vina, PyRx, Schrödinger CADD, MD Simulations, DFT, ADMET.
+          </p>
+          <p class="text-xs text-slate-700">
+            <strong class="text-slate-900">References:</strong> Mr. Abdul Motaleb Bhuiyan (Associate Professor, USTC; motaleb.bd@gmail.com) &amp; Dr. Kishor Mazumder (Professor, JUST; kmazumder@just.ac.bd).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div
+    id="toast"
+    role="status"
+    aria-live="polite"
+    class="fixed bottom-5 right-5 z-50 translate-y-4 opacity-0 pointer-events-none transition-all duration-300 bg-navy-card text-white text-xs sm:text-sm font-medium px-4 py-3 rounded-xl shadow-2xl border border-mint/40 flex items-center gap-2.5 max-w-[90vw]"
+  >
+    <span class="w-2.5 h-2.5 rounded-full bg-mint shrink-0"></span>
+    <span id="toast-message" class="truncate">Copied to clipboard</span>
+  </div>
+
+  <!-- ==================== JAVASCRIPT: PUBLICATIONS DATA & INTERACTIVITY ==================== -->
+  <script>
+    /**
+     * Complete dataset of 14 Selected Published Articles + 7 Under-Review Manuscripts (21 Total)
+     * from Md. Rabiul Hossain's CV.
+     */
+    const publicationsData = [
+      // --- 14 PUBLISHED PEER-REVIEWED ARTICLES ---
+      {
+        id: 'pub-1',
+        status: 'Peer-Reviewed',
+        year: '2026',
+        title: 'Metabolite profiling and pharmacological evaluation of Lablab purpureus seed coat: a rich source of antioxidant, antibacterial and anticancer metabolites',
+        journal: 'J. Sci. Food Agric.',
+        authorsShort: 'Hossain, M. R*. et al.',
+        doiUrl: 'https://doi.org/10.1002/jsfa.71151',
+        metaNote: 'DOI: 10.1002/jsfa.71151',
+        citation: 'Hossain, M. R*., Shill, R., Hasan, M. A., Anam, S., Chowdhury, N. I., Mysha, R. Y., ... & Yusuf, A. T. M. (2026). Metabolite profiling and pharmacological evaluation of Lablab purpureus seed coat: a rich source of antioxidant, antibacterial and anticancer metabolites. Journal of the Science of Food and Agriculture. https://doi.org/10.1002/jsfa.71151'
+      },
+      {
+        id: 'pub-2',
+        status: 'Peer-Reviewed',
+        year: '2026',
+        title: 'Nutritional profiling and pharmacological investigation of Baccaurea motleyana peel and seed through experimental and computational approach',
+        journal: 'In Silico Pharmacology',
+        authorsShort: 'Hossain, M. R*. et al.',
+        doiUrl: 'https://doi.org/10.1007/s40203-026-00784-4',
+        metaNote: 'Vol. 14(3), 274',
+        citation: 'Hossain, M. R*., Sami, M. H., Hossain, M. S., Tanisha, T. F., Fami, Y., Eisha, J. A., ... & Uddin, M. Z. (2026). Nutritional profiling and pharmacological investigation of Baccaurea motleyana peel and seed through experimental and computational approach. In Silico Pharmacology, 14(3), 274. https://doi.org/10.1007/s40203-026-00784-4'
+      },
+      {
+        id: 'pub-3',
+        status: 'Peer-Reviewed',
+        year: '2026',
+        title: 'Therapeutic Potential of Amaranthaceae Species Occurring in Bangladesh for Diabetes and Dyslipidemia Management: A Comprehensive Review',
+        journal: 'Trends in Phytochem. Res.',
+        authorsShort: 'Ajrin, M., ... & Hossain, M. R.*',
+        doiUrl: 'https://doi.org/10.57647/tpr.2026.1003.15',
+        metaNote: 'Vol. 10(3)',
+        citation: 'Ajrin, M., Nath, A. K., Kawsar, M. H., Hossain, M. S., Hasan, M. A., Rana, M. S., & Hossain, M. R.* (2026). Therapeutic Potential of Amaranthaceae Species Occurring in Bangladesh for Diabetes and Dyslipidemia Management: A Comprehensive Review and Future Perspectives on Centrostachys aquatica. Trends in Phytochemical Research, 10(3). https://doi.org/10.57647/tpr.2026.1003.15'
+      },
+      {
+        id: 'pub-4',
+        status: 'Peer-Reviewed',
+        year: '2026',
+        title: 'Exploring the Phytochemical Composition and Pharmacological Activities of Musa acuminata (Wild) Seeds: In vitro Anti-inflammatory & in vivo Analgesic Studies',
+        journal: 'Eur. J. Med. Plants',
+        authorsShort: 'Bhuiya, M. A. M., ... & Hossain, M. R*.',
+        doiUrl: 'https://doi.org/10.9734/ejmp/2026/v37i41368',
+        metaNote: 'Vol. 37(4), 181–190',
+        citation: 'Bhuiya, M. A. M., Israt, R. J., Rana, M. S., & Hossain, M. R*. (2026). Exploring the Phytochemical Composition and Pharmacological Activities of Musa acuminata (Wild) Seeds: In vitro Anti-inflammatory and in vivo Analgesic Studies. European Journal of Medicinal Plants, 37(4), 181–190. https://doi.org/10.9734/ejmp/2026/v37i41368'
+      },
+      {
+        id: 'pub-5',
+        status: 'Peer-Reviewed',
+        year: '2025',
+        title: 'A Novel Insight into the Anti-Diabetic and Diuretic Potentials of the Colocasia esculenta L. (Taro) Vegetable Flower Extract',
+        journal: 'Pharmacol. Res. - Nat. Prod.',
+        authorsShort: 'Mohammad M., Hossain, M. R. et al.',
+        doiUrl: 'https://doi.org/10.1016/j.prenap.2025.100177',
+        metaNote: 'Article 100177',
+        citation: 'Mohammad M., Hossain, M. R., Hasan M.M., Richi F. T., Bhuiya A.M., Chowdhury S., Sultana R, Alam S, Hossain R. (2025). A Novel Insight into the Anti-Diabetic and Diuretic Potentials of the Colocasia esculenta L. (Taro) Vegetable Flower Extract Accentuating its Ethnobotanical Importance. Pharmacological Research - Natural Products, 100177. https://doi.org/10.1016/j.prenap.2025.100177'
+      },
+      {
+        id: 'pub-6',
+        status: 'Peer-Reviewed',
+        year: '2025',
+        title: 'A hepatoprotective experiment on taro vegetable (Colocasia esculenta (L.) Schott) flower employing animal models by mitigating oxidative stress',
+        journal: 'Animal Models Exp. Med.',
+        authorsShort: 'Mohammad, M., Hossain, M. R. et al.',
+        doiUrl: 'https://doi.org/10.1002/ame2.70031',
+        metaNote: 'Vol. 8(7), 1166–1185',
+        citation: 'Mohammad, M., Richi, F. T., Hossain, M. R., Arafat, M., Jiko, P. A., Emon, N. U., ... & Alam, S. (2025). A hepatoprotective experiment on taro vegetable (Colocasia esculenta (L.) Schott) flower employing animal models by mitigating oxidative stress. Animal Models and Experimental Medicine, 8(7), 1166-1185. https://doi.org/10.1002/ame2.70031'
+      },
+      {
+        id: 'pub-7',
+        status: 'Peer-Reviewed',
+        year: '2024',
+        title: 'In-vitro and In-silico Anti-inflammatory Activity of a Common Bangladeshi Fruit: An Approach to Find Selective COX-2 Inhibitors',
+        journal: 'Eur. J. Med. Plants',
+        authorsShort: 'Hossain, M. R. et al.',
+        doiUrl: 'https://doi.org/10.9734/ejmp/2024/v35i61233',
+        metaNote: 'Vol. 35(6), 373–383',
+        citation: 'Hossain, M. R., Sharif S. R., Bhuiya M. A. M.*, Hasan M.M., & Sharma S. (2024). In-vitro and In-silico Anti-inflammatory Activity of a Common Bangladeshi Fruit: An Approach to Find Selective COX-2 Inhibitors. European Journal of Medicinal Plants, 35(6), 373-383. https://doi.org/10.9734/ejmp/2024/v35i61233'
+      },
+      {
+        id: 'pub-8',
+        status: 'Peer-Reviewed',
+        year: '2024',
+        title: 'Exploring the Potential of Momordica charantia Fruits Mucilage as a Novel Pharmaceutical Excipient',
+        journal: 'J. Pharm. Res. Int.',
+        authorsShort: 'Chowdhury, T. M., Hossain, M. R*. et al.',
+        doiUrl: 'https://doi.org/10.9734/JPRI/2024/v36i67520',
+        metaNote: 'Vol. 36(6), 35–42',
+        citation: 'Chowdhury, T. M., Hossain, M. R*., Hossain, R., & Sultana, R. (2024). Exploring the Potential of Momordica charantia Fruits Mucilage as a Novel Pharmaceutical Excipient. Journal of Pharmaceutical Research International, 36(6), 35-42. https://doi.org/10.9734/JPRI/2024/v36i67520'
+      },
+      {
+        id: 'pub-9',
+        status: 'Peer-Reviewed',
+        year: '2023',
+        title: 'In vivo, in vitro and in silico study of Cucurbita moschata flower extract: a promising source of natural analgesic, anti-inflammatory, and antibacterial agents',
+        journal: 'Molecules',
+        authorsShort: 'Hossain, M. R. et al.',
+        doiUrl: 'https://doi.org/10.3390/molecules28186573',
+        metaNote: 'Vol. 28(18), 6573',
+        citation: 'Hossain, M. R., Alam, R., Chung, H. J., Eva, T. A., Kabir, M. F., Mamurat, H., ... & Hossen, S. M. (2023). In vivo, in vitro and in silico study of Cucurbita moschata flower extract: a promising source of natural analgesic, anti-inflammatory, and antibacterial agents. Molecules, 28(18), 6573. https://doi.org/10.3390/molecules28186573'
+      },
+      {
+        id: 'pub-10',
+        status: 'Peer-Reviewed',
+        year: '2023',
+        title: 'Antibacterial Activity of Green Synthesized Silver Nanoparticles of Lablab purpureus Flowers Extract against Human Pathogenic Bacteria',
+        journal: 'Trop. J. Nat. Prod. Res.',
+        authorsShort: 'Hossain, M. R. et al.',
+        doiUrl: 'http://www.doi.org/10.26538/tjnpr/v7i8.12',
+        metaNote: 'Vol. 7(8)',
+        citation: 'Hossain, M. R., Biplob, A. I., Sharif, S. R., Bhuiya, A. M., & Sayem, A. S. M. (2023). Antibacterial Activity of Green Synthesized Silver Nanoparticles of Lablab purpureus Flowers Extract against Human Pathogenic Bacteria. Tropical Journal of Natural Product Research, 7(8). http://www.doi.org/10.26538/tjnpr/v7i8.12'
+      },
+      {
+        id: 'pub-11',
+        status: 'Peer-Reviewed',
+        year: '2021',
+        title: 'Biofunctionalities of unprocessed and processed flours of Australian lupin cultivars: Antidiabetic and organ protective potential studies',
+        journal: 'Food Research International',
+        authorsShort: 'Mazumder, K., Hossain, M. R. et al.',
+        doiUrl: 'https://doi.org/10.1016/j.foodres.2021.110536',
+        metaNote: 'Vol. 147, 110536',
+        citation: 'Mazumder, K., Hossain, M. R., Aktar, A., Dash, R., & Farahnaky, A. (2021). Biofunctionalities of unprocessed and processed flours of Australian lupin cultivars: Antidiabetic and organ protective potential studies. Food Research International, 147, 110536. https://doi.org/10.1016/j.foodres.2021.110536'
+      },
+      {
+        id: 'pub-12',
+        status: 'Peer-Reviewed',
+        year: '2021',
+        title: 'CNS anti-depressant, anxiolytic and analgesic effects of Ganoderma applanatum (mushroom) along with ligand-receptor binding screening',
+        journal: 'Biochem. Biophys. Reports',
+        authorsShort: 'Hossen, S. M., Hossain, M. R. et al.',
+        doiUrl: 'https://doi.org/10.1016/j.bbrep.2021.101062',
+        metaNote: 'Vol. 27, 101062',
+        citation: 'Hossen, S. M., Islam, M. J., Hossain, M. R., Barua, A., Uddin, M. G., & Emon, N. U. (2021). CNS anti-depressant, anxiolytic and analgesic effects of Ganoderma applanatum (mushroom) along with ligand-receptor binding screening provide new insights: Multi-disciplinary approaches. Biochemistry and Biophysics Reports, 27, 101062. https://doi.org/10.1016/j.bbrep.2021.101062'
+      },
+      {
+        id: 'pub-13',
+        status: 'Peer-Reviewed',
+        year: '2020',
+        title: 'New Insight in the Sedative and Anxiolytic Activities of Amaranthus tricolor L. Leaves Extract in Mice',
+        journal: 'Asian Food Science Journal',
+        authorsShort: 'Jahan, N., Hossain, M. R. et al.',
+        doiUrl: 'https://doi.org/10.9734/afsj/2020/v19i430245',
+        metaNote: 'pp. 16–24',
+        citation: 'Jahan, N., Hossain, M. R., Hossain, M. K., Alam, M. R., & Das, S. (2020). New Insight in the Sedative and Anxiolytic Activities of Amaranthus tricolor L. Leaves Extract in Mice. Asian Food Science Journal, 16-24. https://doi.org/10.9734/afsj/2020/v19i430245'
+      },
+      {
+        id: 'pub-14',
+        status: 'Peer-Reviewed',
+        year: '2019',
+        title: 'Isolation and Characterization of Mucilage from Tinospora cordifolia as Tablet Binder and Release Modifier',
+        journal: 'Trop. J. Nat. Prod. Res.',
+        authorsShort: 'Barua A., Hossain M.R. et al.',
+        doiUrl: 'https://tjnpr.org/index.php/home/article/view/864',
+        metaNote: 'Vol. 3(1), 1–5',
+        citation: 'Barua A., Hossain M.R., Sultana R., Mazumder K., Absar N., Hossain R. (2019). Isolation and Characterization of Mucilage from Tinospora cordifolia as Tablet Binder and Release Modifier. Trop J Nat Prod Res, 3(1), 1-5. https://tjnpr.org/index.php/home/article/view/864'
+      },
+
+      // --- 7 MANUSCRIPTS CURRENTLY UNDER REVIEW ---
+      {
+        id: 'rev-1',
+        status: 'Under Review',
+        year: 'Under Review',
+        title: 'Exploring the Antioxidant, Anthelmintic and Antidiarrheal Potential of Cissus assamica Stem: A Multi-Solvent Study through Metabolomic Profiling and Computational Modeling',
+        journal: 'Food Science & Nutrition (Wiley)',
+        authorsShort: 'Md. Rabiul Hossain (Corresponding Author)',
+        doiUrl: '',
+        metaNote: 'Manuscript ID: 6541878',
+        citation: 'Hossain, M. R.* (Under Review). Exploring the Antioxidant, Anthelmintic and Antidiarrheal Potential of Cissus assamica Stem: A Multi-Solvent Study through Metabolomic Profiling and Computational Modeling. Food Science and Nutrition (Wiley), Manuscript ID: 6541878.'
+      },
+      {
+        id: 'rev-2',
+        status: 'Under Review',
+        year: 'Under Review',
+        title: 'Metabolite Profiling and Multimodal Pharmacological Assessment of Musa acuminata Seeds: Antioxidant, Antibacterial, and Anticancer Insights',
+        journal: 'ChemistryOpen (Wiley)',
+        authorsShort: 'Md. Rabiul Hossain (Corresponding Author)',
+        doiUrl: '',
+        metaNote: 'Manuscript ID: 5331669',
+        citation: 'Hossain, M. R.* (Under Review). Metabolite Profiling and Multimodal Pharmacological Assessment of Musa acuminata Seeds: Antioxidant, Antibacterial, and Anticancer Insights. ChemistryOpen (Wiley), Manuscript ID: 5331669.'
+      },
+      {
+        id: 'rev-3',
+        status: 'Under Review',
+        year: 'Under Review',
+        title: 'Exploration of Antidiabetic Potential of Musa acuminata Seeds through Integrated Biological and Computational Approaches',
+        journal: 'Pharmacol. Res. - Nat. Prod. (Elsevier)',
+        authorsShort: 'Md. Rabiul Hossain (Corresponding Author)',
+        doiUrl: '',
+        metaNote: 'Under Editorial Review',
+        citation: 'Hossain, M. R.* (Under Review). Exploration of Antidiabetic Potential of Musa acuminata Seeds through Integrated Biological and Computational Approaches. Pharmacological Research - Natural Products (Elsevier).'
+      },
+      {
+        id: 'rev-4',
+        status: 'Under Review',
+        year: 'Under Review',
+        title: 'Uncovering the Antidiabetic and Organ-Protective Effects of Centrostachys aquatica (R.Br.) Moq.: Leaf and Stem Extracts Supported by Experimental & Computational Evidence',
+        journal: 'J. Ethnopharmacology (Elsevier)',
+        authorsShort: 'Md. Rabiul Hossain (Corresponding Author)',
+        doiUrl: '',
+        metaNote: 'ID: JETHNO-D-26-08211',
+        citation: 'Hossain, M. R.* (Under Review). Uncovering the Antidiabetic and Organ-Protective Effects of Centrostachys aquatica (R.Br.) Moq.: A Comparative Study of Leaf and Stem Extracts Supported by Experimental and Computational Evidence. Journal of Ethnopharmacology (Elsevier), JETHNO-D-26-08211.'
+      },
+      {
+        id: 'rev-5',
+        status: 'Under Review',
+        year: 'Under Review',
+        title: 'Evaluation of Phenolic-Rich Extracts of Tinospora cordifolia for Antioxidant and Anticancer Activities in Cellular and Animal Models',
+        journal: 'Journal of Chemistry (Wiley)',
+        authorsShort: 'Md. Rabiul Hossain (Corresponding Author)',
+        doiUrl: '',
+        metaNote: 'Manuscript ID: 2894743',
+        citation: 'Hossain, M. R.* (Under Review). Evaluation of Phenolic-Rich Extracts of Tinospora cordifolia for Antioxidant and Anticancer Activities in Cellular and Animal Models. Journal of Chemistry (Wiley), Manuscript ID: 2894743.'
+      },
+      {
+        id: 'rev-6',
+        status: 'Under Review',
+        year: 'Under Review',
+        title: 'Comparative Investigation of Green-Synthesized Silver Nanoparticles from Piper betle and Lawsonia inermis as Antimicrobial Agents',
+        journal: 'Phytochem. Food & Med. (Wiley)',
+        authorsShort: 'Md. Rabiul Hossain (First & Corresponding)',
+        doiUrl: '',
+        metaNote: 'Manuscript ID: 4192976',
+        citation: 'Hossain, M. R.* (Under Review). Comparative Investigation of Green-Synthesized Silver Nanoparticles from Piper betle and Lawsonia inermis as Antimicrobial Agents. Phytochemicals in Food and Medicine (Wiley), Manuscript ID: 4192976.'
+      },
+      {
+        id: 'rev-7',
+        status: 'Under Review',
+        year: 'Under Review',
+        title: 'Endophytic Fungi and Bacteria in Bangladeshi Plants: Diversity, Bioactive Potential, and Emerging Drug Discovery Opportunities',
+        journal: 'J. Eukaryotic Microbiology (Wiley)',
+        authorsShort: 'Md. Rabiul Hossain (Corresponding Author)',
+        doiUrl: '',
+        metaNote: 'Manuscript ID: 9888652',
+        citation: 'Hossain, M. R.* (Under Review). Endophytic Fungi and Bacteria in Bangladeshi Plants: Diversity, Bioactive Potential, and Emerging Drug Discovery Opportunities. Journal of Eukaryotic Microbiology (Wiley), Manuscript ID: 9888652.'
+      }
+    ];
+
+    // State variables
+    let activePubFilter = 'All';
+    let pubSearchQuery = '';
+    let showAllPubs = false;
+    let toastTimeout = null;
+
+    /**
+     * Render publication cards matching the exact 3-column dark-navy Figma mockup card anatomy.
+     */
+    function renderPublications() {
+      const grid = document.getElementById('publications-grid');
+      const emptyState = document.getElementById('pub-empty');
+      const visibleCountEl = document.getElementById('pub-visible-count');
+      const totalCountEl = document.getElementById('pub-total-count');
+      const toggleWrap = document.getElementById('pub-toggle-wrap');
+      const toggleText = document.getElementById('pub-toggle-text');
+      const toggleIcon = document.getElementById('pub-toggle-icon');
+
+      if (!grid) return;
+
+      const q = pubSearchQuery.trim().toLowerCase();
+      const filtered = publicationsData.filter((item) => {
+        let matchesCategory = true;
+        if (activePubFilter === '2026') matchesCategory = item.year === '2026';
+        else if (activePubFilter === '2025') matchesCategory = item.year === '2025';
+        else if (activePubFilter === '2024') matchesCategory = item.year === '2024';
+        else if (activePubFilter === '2023Earlier') matchesCategory = ['2023', '2021', '2020', '2019'].includes(item.year);
+        else if (activePubFilter === 'UnderReview') matchesCategory = item.status === 'Under Review';
+
+        const hay = `${item.title} ${item.journal} ${item.authorsShort} ${item.year} ${item.metaNote}`.toLowerCase();
+        const matchesQuery = !q || hay.includes(q);
+        return matchesCategory && matchesQuery;
+      });
+
+      const itemsToShow = showAllPubs ? filtered : filtered.slice(0, 6);
+
+      if (visibleCountEl) visibleCountEl.textContent = itemsToShow.length;
+      if (totalCountEl) totalCountEl.textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        emptyState.classList.remove('hidden');
+        toggleWrap.classList.add('hidden');
+        return;
+      }
+
+      emptyState.classList.add('hidden');
+
+      if (filtered.length > 6) {
+        toggleWrap.classList.remove('hidden');
+        toggleText.textContent = showAllPubs
+          ? 'Show Fewer Publications'
+          : `Show All Publications (${filtered.length})`;
+        toggleIcon.style.transform = showAllPubs ? 'rotate(180deg)' : 'rotate(0deg)';
+      } else {
+        toggleWrap.classList.add('hidden');
+      }
+
+      grid.innerHTML = itemsToShow
+        .map((pub) => {
+          const isReview = pub.status === 'Under Review';
+          const statusBadgeClass = isReview
+            ? 'bg-amberAccent/15 text-amberAccent border border-amberAccent/30'
+            : 'bg-white/10 text-slate-200 border border-white/10';
+
+          const detailsButton = pub.doiUrl
+            ? `<a href="${pub.doiUrl}" target="_blank" rel="noopener noreferrer" class="flex-1 text-center px-3 py-2 rounded-full border border-navy-border hover:border-mint/60 text-slate-200 hover:text-white text-xs font-medium transition-colors">DOI / Details</a>`
+            : `<button type="button" onclick="toggleReviewMeta('${pub.id}')" class="flex-1 text-center px-3 py-2 rounded-full border border-navy-border hover:border-amberAccent/60 text-slate-200 hover:text-white text-xs font-medium transition-colors">Details</button>`;
+
+          return `
+            <article class="bg-navy-card border border-navy-border rounded-2xl p-5 flex flex-col justify-between hover:border-mint/45 transition-all">
+              <div>
+                <!-- Top Status Pill -->
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${statusBadgeClass}">
+                    ${pub.status}
+                  </span>
+                  <span class="text-[11px] font-medium text-slate-400">${pub.year}</span>
+                </div>
+
+                <!-- Bold White Title -->
+                <h3 class="font-display text-sm sm:text-[15px] font-bold text-white leading-snug mb-3">
+                  ${pub.title}
+                </h3>
+
+                <!-- Mint/Teal Sub-Badge showing Journal Name & Year -->
+                <div class="inline-flex items-center px-2.5 py-1 rounded-md bg-mint/12 border border-mint/25 text-mint text-[11px] font-semibold mb-3">
+                  ${pub.journal}${!isReview ? ' &middot; ' + pub.year : ''}
+                </div>
+
+                <!-- Author Line with Small Circular Avatar Dot -->
+                <div class="flex items-center gap-2 text-xs text-slate-300 mb-3">
+                  <span class="w-5 h-5 rounded-full bg-gradient-to-br from-mint to-blueAccent text-navy-bg font-bold text-[9px] flex items-center justify-center shrink-0">RH</span>
+                  <span class="truncate">${pub.authorsShort}</span>
+                </div>
+
+                <!-- Expandable Manuscript ID Note (for Under Review) -->
+                <div id="meta-${pub.id}" class="hidden mb-3 px-3 py-2 rounded-lg bg-navy-input border border-navy-border text-[11px] text-amberAccent">
+                  ${pub.metaNote}
+                </div>
+              </div>
+
+              <!-- Bottom Row: 2 Pill Buttons (DOI/Details + Solid White Cite APA) -->
+              <div class="pt-3 border-t border-navy-border/80 flex items-center gap-2.5">
+                ${detailsButton}
+                <button
+                  type="button"
+                  onclick="citePublication('${pub.id}', this)"
+                  class="flex-1 text-center px-3 py-2 rounded-full bg-white hover:bg-mint text-navy-bg text-xs font-bold transition-colors"
+                >
+                  Cite (APA)
+                </button>
+              </div>
+            </article>
+          `;
+        })
+        .join('');
+    }
+
+    /**
+     * Expand/collapse manuscript ID detail for Under Review cards.
+     */
+    function toggleReviewMeta(pubId) {
+      const el = document.getElementById(`meta-${pubId}`);
+      if (el) el.classList.toggle('hidden');
+    }
+
+    /**
+     * Copy formatted APA citation to clipboard and display feedback.
+     */
+    function citePublication(pubId, btnEl) {
+      const pub = publicationsData.find((p) => p.id === pubId);
+      if (!pub) return;
+
+      const ok = copyToClipboard(pub.citation, 'APA citation copied to clipboard');
+      if (ok && btnEl) {
+        const originalText = btnEl.textContent;
+        btnEl.textContent = 'Copied!';
+        setTimeout(() => {
+          btnEl.textContent = originalText;
+        }, 1600);
+      }
+    }
+
+    /**
+     * Toggle showing 6 cards vs all matching publications.
+     */
+    function toggleShowAllPublications() {
+      showAllPubs = !showAllPubs;
+      renderPublications();
+    }
+
+    /**
+     * Reset publication search and active filter pill.
+     */
+    function resetPubFilters() {
+      activePubFilter = 'All';
+      pubSearchQuery = '';
+      showAllPubs = false;
+      const input = document.getElementById('pub-search');
+      if (input) input.value = '';
+      updatePubPills('All');
+      renderPublications();
+    }
+
+    function updatePubPills(activeVal) {
+      document.querySelectorAll('.pub-pill').forEach((pill) => {
+        const isActive = pill.getAttribute('data-filter') === activeVal;
+        pill.className = isActive
+          ? 'pub-pill px-4 py-2 rounded-full text-xs font-semibold bg-mint text-navy-bg transition-colors'
+          : 'pub-pill px-4 py-2 rounded-full text-xs font-semibold bg-navy-card text-slate-300 border border-navy-border hover:border-mint/50 transition-colors';
+      });
+    }
+
+    /**
+     * Iframe-safe clipboard helper using document.execCommand('copy').
+     */
+    function copyToClipboard(text, toastMessage) {
+      try {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        const copied = document.execCommand('copy');
+        document.body.removeChild(textarea);
+        if (copied) {
+          showToast(toastMessage || 'Copied to clipboard');
+          return true;
+        }
+        return false;
+      } catch (err) {
+        showToast('Unable to copy automatically.');
+        return false;
+      }
+    }
+
+    /**
+     * Sleek non-blocking toast notification.
+     */
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const msg = document.getElementById('toast-message');
+      if (!toast || !msg) return;
+
+      msg.textContent = message;
+      toast.classList.remove('translate-y-4', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-4', 'opacity-0', 'pointer-events-none');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 2600);
+    }
+
+    /**
+     * Open / Close Printable CV Modal.
+     */
+    function openCvModal() {
+      const modal = document.getElementById('cv-modal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCvModal() {
+      const modal = document.getElementById('cv-modal');
+      if (!modal) return;
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    /**
+     * Initialize interactive listeners once DOM is ready.
+     */
+    document.addEventListener('DOMContentLoaded', () => {
+      renderPublications();
+
+      // Search publications live
+      const searchInput = document.getElementById('pub-search');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          pubSearchQuery = e.target.value;
+          showAllPubs = false;
+          renderPublications();
+        });
+      }
+
+      // Publication filter pills
+      document.querySelectorAll('.pub-pill').forEach((pill) => {
+        pill.addEventListener('click', () => {
+          activePubFilter = pill.getAttribute('data-filter');
+          showAllPubs = false;
+          updatePubPills(activePubFilter);
+          renderPublications();
+        });
+      });
+
+      // Grants / Conferences / Training / References Tab Switcher
+      const extraTabs = document.querySelectorAll('.extra-tab');
+      const extraPanels = document.querySelectorAll('.extra-panel');
+      extraTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const target = tab.getAttribute('data-extra-tab');
+          extraTabs.forEach((t) => {
+            const active = t === tab;
+            t.setAttribute('aria-selected', String(active));
+            t.className = active
+              ? 'extra-tab px-4 py-2 rounded-full text-xs font-semibold bg-mint text-navy-bg transition-colors'
+              : 'extra-tab px-4 py-2 rounded-full text-xs font-semibold bg-navy-input text-slate-300 border border-navy-border hover:border-mint/50 transition-colors';
+          });
+          extraPanels.forEach((panel) => {
+            panel.classList.toggle('hidden', panel.id !== `extra-panel-${target}`);
+          });
+        });
+      });
+
+      // Mobile Hamburger Menu
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const openIcon = document.getElementById('menu-icon-open');
+      const closeIcon = document.getElementById('menu-icon-close');
+
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', () => {
+          const isHidden = mobileMenu.classList.toggle('hidden');
+          menuBtn.setAttribute('aria-expanded', String(!isHidden));
+          openIcon.classList.toggle('hidden', !isHidden);
+          closeIcon.classList.toggle('hidden', isHidden);
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            openIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          });
+        });
+      }
+
+      // Close CV Modal on backdrop click or Escape key
+      const modal = document.getElementById('cv-modal');
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeCvModal();
+        });
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeCvModal();
+      });
+    });
+  </script>
+</body>
+</html>
